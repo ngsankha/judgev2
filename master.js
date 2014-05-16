@@ -2,14 +2,13 @@
   var fs = require('fs'),
       net = require('net');
 
-  var slaves = [];
+  var slavesIp = {},
+      slavesLoad = {};
 
   var enlistServers = function() {
-    var servers = JSON.parse(fs.readFileSync('slaves.json'));
-    for (var name in servers) {
-      slaves.push({ name: name,
-                    ip: servers[name],
-                    load: 0 });
+    slavesIp = JSON.parse(fs.readFileSync('slaves.json'));
+    for (var name in slavesIp) {
+      slavesLoad[name] = 0;
     }
     console.log('List of slaves loaded.');
   };
@@ -27,10 +26,34 @@
   };
 
   var extHandler = function(socket) {
-
+    var data = '';
+    socket.on('data', function(buf) {
+      data += buf;
+    });
+    socket.on('end', function() {
+      sendToSlave(data);
+    });
   };
 
   var masterHandler = function(socket) {
 
   };
+
+  var sendToSlave = function(data) {
+    var minLoad = Infinity,
+        name;
+    for (var server in slavesIp) {
+      if (slavesLoad[server] < minLoad) {
+        minLoad = slavesLoad[server];
+        name = server;
+      }
+    }
+    var client = net.connect({ host: slavesIp[name], port: config.slavePort },
+      function() {
+        client.end(data);
+        slavesLoad[name]++;
+      });
+  };
+
+  module.exports.createServers = createServers;
 })();

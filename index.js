@@ -8,6 +8,8 @@ if (process.argv.length > 2) {
       slave.createServer();
       break;
     case '--master':
+      var master = require('./master.js');
+      master.createServers();
       break;
   }
 } else {

@@ -16,6 +16,7 @@
     });
     socket.on('end', function() {
       // handling the judging part
+      console.log(data);
     });
   };
 
