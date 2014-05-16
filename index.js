@@ -1,4 +1,15 @@
 // make config a magic global variable
 config = require('./config.js');
 
-var master = require('./master.js');
+if (process.argv.length > 2) {
+  switch (process.argv[2]) {
+    case '--slave':
+      var slave = require('./slave.js');
+      slave.createServer();
+      break;
+    case '--master':
+      break;
+  }
+} else {
+  console.log("You must mention --master or --slave option.");
+}
