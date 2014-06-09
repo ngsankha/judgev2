@@ -1,5 +1,9 @@
 {
   "slavePort": 2020,
   "masterPort": 2021,
-  "extPort": 6029
+  "extPort": 6029,
+  "dbHandler": "./db-hoax.js",
+  "languages": {
+    "C": "./languages/C.js"
+  }
 }

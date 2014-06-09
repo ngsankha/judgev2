@@ -32,6 +32,7 @@
     });
     socket.on('end', function() {
       sendToSlave(data);
+      //console.log(data);
     });
   };
 

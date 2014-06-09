@@ -1,5 +1,6 @@
-// make config a magic global variable
-config = require('./config.js');
+// make config and static a magic global variable
+config = require('./config.js'),
+static = require('./static.js');
 
 if (process.argv.length > 2) {
   switch (process.argv[2]) {

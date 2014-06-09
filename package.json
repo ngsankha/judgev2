@@ -1,0 +1,9 @@
+{
+  "name": "judgev2",
+  "version": "0.1.0",
+  "description": "online judge",
+  "dependencies": {
+    "promise": "*",
+    "rimraf": "*"
+  }
+}

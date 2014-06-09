@@ -6,6 +6,8 @@
 
   module.exports.slavePort = config.slavePort;
   module.exports.extPort = config.extPort;
+  module.exports.dbHandler = config.dbHandler;
+  module.exports.languages = config.languages;
 
   console.log('Configuration file loaded.');
 })();
