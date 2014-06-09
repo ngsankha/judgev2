@@ -4,9 +4,13 @@
       rimraf = require('rimraf'),
       db = require(config.dbHandler),
       reportError = static.reportError;
-  var counter = 0;
+  var counter = 0,
+      name;
 
-  var createServer = function() {
+  var createServer = function(serverName) {
+    name = serverName;
+
+    // remove old stage directory
     rimraf('stage', function(err) {
       if (!err) {
         fs.mkdirSync('stage');
@@ -111,7 +115,16 @@
   };
 
   var checkRunOutput = function(data) {
+    // TODO: actual output testing code
+    // also write to the db here
     console.log(data + "");
+  };
+
+  var reportDone = function() {
+    var client = net.connect({ host: config.masterIP, port: config.masterPort },
+    function() {
+      client.end(name);
+    });
   };
 
   var createWorkspace = function(obj, count) {
@@ -130,7 +143,8 @@
       .then(readRunErrors(i), reportError)
       .then(checkRunErrors, reportError)
       .then(readRunOutput(i), reportError)
-      .then(checkRunOutput, reportError);
+      .then(checkRunOutput, reportError)
+      .then(reportDone);
     })(count);
   };
 

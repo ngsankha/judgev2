@@ -6,6 +6,8 @@
 
   module.exports.slavePort = config.slavePort;
   module.exports.extPort = config.extPort;
+  module.exports.masterIP = config.masterIP;
+  module.exports.masterPort = config.masterPort;
   module.exports.dbHandler = config.dbHandler;
   module.exports.languages = config.languages;
 

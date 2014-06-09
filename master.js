@@ -14,6 +14,8 @@
   };
 
   var createServers = function() {
+    enlistServers();
+
     // create the server that will handle internal slaves load balancing
     var masterServer = net.createServer(masterHandler);
     masterServer.listen(config.masterPort, 'localhost');
@@ -32,12 +34,18 @@
     });
     socket.on('end', function() {
       sendToSlave(data);
-      //console.log(data);
     });
   };
 
   var masterHandler = function(socket) {
-
+    var data = '';
+    socket.on('data', function(buf) {
+      data += buf;
+    });
+    socket.on('end', function() {
+      slavesLoad[data]--;
+      console.log(slavesLoad[data]);
+    });
   };
 
   var sendToSlave = function(data) {
@@ -54,6 +62,10 @@
         client.end(data);
         slavesLoad[name]++;
       });
+    client.on('error', function(err) {
+      // TODO: Need a good failure recovery mechanism here
+      console.log("Error connecting to host: ", name);
+    });
   };
 
   module.exports.createServers = createServers;

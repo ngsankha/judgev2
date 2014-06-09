@@ -6,7 +6,7 @@ if (process.argv.length > 2) {
   switch (process.argv[2]) {
     case '--slave':
       var slave = require('./slave.js');
-      slave.createServer();
+      slave.createServer(process.argv[3]);
       break;
     case '--master':
       var master = require('./master.js');
@@ -14,5 +14,5 @@ if (process.argv.length > 2) {
       break;
   }
 } else {
-  console.log("You must mention --master or --slave option.");
+  console.log("You must mention --master or --slave [name] option.");
 }

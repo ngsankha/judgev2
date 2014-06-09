@@ -7,6 +7,7 @@
   };
 
   var getRunScript = function(filename, counter) {
+    // TODO: pay attention to security
     var script = "cd stage/" + counter + "\n"
                + "./a.out <in.txt 1>tmp.txt 2>err.txt\n"
                + "exit 0";

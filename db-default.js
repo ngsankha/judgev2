@@ -12,5 +12,22 @@
     // }
   };
 
+  var reportCompileFail = function(msg) {
+    // code that handles the compile failure
+    // do whatever you want to write to the db here
+  };
+
+  var reportRunFail = function(msg) {
+    // code that handles the run failure
+    // do whatever you want to write to the db here
+  };
+
+  var reportResult = function(msg) {
+    // code that handles the result of the code
+    // do whatever you want to write to the db here
+  }
+
   module.exports.parse = parse;
+  module.exports.reportCompileFail = reportCompileFail;
+  module.exports.reportRunFail = reportRunFail;
 })();
