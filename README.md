@@ -27,6 +27,6 @@ To start the slave:
 
 Contributing
 ------------
-This need your love, please write the missing features and make it more awesome. Somethings that you can help out with are listed on the Issues page.
+This needs your love, please write the missing features and make it more awesome. Somethings that you can help out with are listed on the Issues page.
 
 For more information ask on channel #pclub-iitj on Freenode.
