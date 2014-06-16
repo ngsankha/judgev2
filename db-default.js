@@ -2,7 +2,8 @@
   var parse = function(data) {
     // here is our custom db handling code.
     // return an object of the form:
-    // { filename: /* the filename */,
+    // { id: /* the unique id of the problem */,
+    //   filename: /* the filename */,
     //   code: /* the code submitted */,
     //   language: /* the programming language */
     //   input: /* the input test data */,
@@ -12,17 +13,17 @@
     // }
   };
 
-  var reportCompileFail = function(msg) {
+  var reportCompileFail = function(id, msg) {
     // code that handles the compile failure
     // do whatever you want to write to the db here
   };
 
-  var reportRunFail = function(msg) {
+  var reportRunFail = function(id, msg) {
     // code that handles the run failure
     // do whatever you want to write to the db here
   };
 
-  var reportResult = function(msg) {
+  var reportResult = function(id, msg) {
     // code that handles the result of the code
     // do whatever you want to write to the db here
   }

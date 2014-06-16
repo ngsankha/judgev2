@@ -5,7 +5,8 @@
                "printf(\"Hello World\\n\");\n" +
                "return 0;\n" +
                "}";
-    return { filename: "hello.c",
+    return { id: 0,
+             filename: "hello.c",
              code: code,
              language: "C",
              input: "",
@@ -15,15 +16,15 @@
            };
   };
 
-  var reportCompileFail = function(msg) {
+  var reportCompileFail = function(id, msg) {
     console.log(msg);
   };
 
-  var reportRunFail = function(msg) {
+  var reportRunFail = function(id, msg) {
     console.log(msg);
   };
 
-  var reportResult = function(msg) {
+  var reportResult = function(id, msg) {
     // code that handles the result of the code
     // do whatever you want to write to the db here
   }

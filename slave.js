@@ -76,10 +76,12 @@
     };
   };
 
-  var checkCompile = function(data) {
-    if ((data + "").trim() == "")
-      return true;
-    return db.reportCompileFail(data + "");
+  var checkCompile = function(id) {
+    return function(data) {
+      if ((data + "").trim() == "")
+        return true;
+      return db.reportCompileFail(id, data + "");
+    };
   };
 
   var writeRunScript = function(language, filename, counter) {
@@ -102,10 +104,12 @@
     };
   };
 
-  var checkRunErrors = function(data) {
-    if ((data + "").trim() == "")
-      return true;
-    return db.reportRunFail(data + "");
+  var checkRunErrors = function(id) {
+    return function(data) {
+      if ((data + "").trim() == "")
+        return true;
+      return db.reportRunFail(id, data + "");
+    };
   };
 
   var readRunOutput = function(counter) {
@@ -114,11 +118,12 @@
     };
   };
 
-  var checkRunOutput = function(output, matchLines, partial) {
+  var checkRunOutput = function(id, output, matchLines, partial) {
     return function(data) {
       // TODO: actual output testing code
       // also write to the db here
-      console.log(data + ""); 
+      // that would be a db.reportResult(id, result) call.
+      console.log(data + "");
     };
   };
 
@@ -139,13 +144,13 @@
       .then(writeCompileScript(obj.language, obj.filename, i), reportError)
       .then(execCompileScript(i), reportError)
       .then(readCompile(i), reportError)
-      .then(checkCompile, reportError)
+      .then(checkCompile(obj.id), reportError)
       .then(writeRunScript(obj.language, obj.filename, i), reportError)
       .then(execRunScript(i), reportError)
       .then(readRunErrors(i), reportError)
-      .then(checkRunErrors, reportError)
+      .then(checkRunErrors(obj.id), reportError)
       .then(readRunOutput(i), reportError)
-      .then(checkRunOutput(obj.output, obj.matchLines, obj.partial), reportError)
+      .then(checkRunOutput(obj.id, obj.output, obj.matchLines, obj.partial), reportError)
       .then(reportDone);
     })(count);
   };
