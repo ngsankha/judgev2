@@ -114,10 +114,12 @@
     };
   };
 
-  var checkRunOutput = function(data) {
-    // TODO: actual output testing code
-    // also write to the db here
-    console.log(data + "");
+  var checkRunOutput = function(output, matchLines, partial) {
+    return function(data) {
+      // TODO: actual output testing code
+      // also write to the db here
+      console.log(data + ""); 
+    };
   };
 
   var reportDone = function() {
@@ -143,7 +145,7 @@
       .then(readRunErrors(i), reportError)
       .then(checkRunErrors, reportError)
       .then(readRunOutput(i), reportError)
-      .then(checkRunOutput, reportError)
+      .then(checkRunOutput(obj.output, obj.matchLines, obj.partial), reportError)
       .then(reportDone);
     })(count);
   };
