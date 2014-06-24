@@ -6,7 +6,7 @@
       slavesLoad = {};
 
   var enlistServers = function() {
-    slavesIp = JSON.parse(fs.readFileSync('slaves.json'));
+    slavesIp = JSON.parse(fs.readFileSync(test ? './tests/slaves.json' : 'slaves.json'));
     for (var name in slavesIp) {
       slavesLoad[name] = 0;
     }
@@ -44,7 +44,6 @@
     });
     socket.on('end', function() {
       slavesLoad[data]--;
-      console.log(slavesLoad[data]);
     });
   };
 
@@ -64,7 +63,7 @@
       });
     client.on('error', function(err) {
       // TODO: Need a good failure recovery mechanism here
-      console.log("Error connecting to host: ", name);
+      console.log("Error connecting to host:", name);
     });
   };
 

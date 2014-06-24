@@ -1,7 +1,7 @@
 (function(filename, counter) {
   var getCompileScript = function(filename, counter) {
     var script = "cd stage/" + counter + "\n"
-               + "gcc -lm " + filename + " 2>err.txt\n"
+               + "gcc -w -lm " + filename + " 2>err.txt\n"
                + "exit 0";
     return script;
   };

@@ -80,7 +80,8 @@
     return function(data) {
       if ((data + "").trim() == "")
         return true;
-      return db.reportCompileFail(id, data + "");
+      db.reportCompileFail(id, data + "");
+      throw new Error("Compile Error");
     };
   };
 
@@ -108,7 +109,8 @@
     return function(data) {
       if ((data + "").trim() == "")
         return true;
-      return db.reportRunFail(id, data + "");
+      db.reportRunFail(id, data + "");
+      throw new Error("Runtime Error");
     };
   };
 
@@ -124,6 +126,7 @@
       // also write to the db here
       // that would be a db.reportResult(id, result) call.
       console.log(data + "");
+      return db.reportResult(id, data + "");
     };
   };
 
