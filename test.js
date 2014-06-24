@@ -26,15 +26,14 @@ function testHandler(socket) {
     currTest.checkResponse(data);
     if (tested === tests.length)
       shutdown();
+    else
+      runTests(tested);
   });
 };
 
-function runTests() {
-  // TODO: should use ES6 for-of loop here, when available
-  for (var i in tests) {
-    currTest = require('./tests/' + tests[i]);
-    currTest.runTest();
-  }
+function runTests(i) {
+  currTest = require('./tests/' + tests[i]);
+  currTest.runTest();
 }
 
 function shutdown() {
@@ -46,8 +45,11 @@ function shutdown() {
 init();
 
 // wait for 1 second to ensure that master and slave servers are running
-setTimeout(runTests, 1000);
+setTimeout(function() {
+  runTests(0);
+}, 1000);
 
 var tests = [
-  "testC.js"
+  "testC.js",
+  "testCompileError.js"
 ];

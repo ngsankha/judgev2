@@ -19,6 +19,19 @@
                  partial: false
                };
       }
+
+      case 'CompileErrorC': {
+        var code = "int main() {";
+        return { id: data,
+                 filename: "hello.c",
+                 code: code,
+                 language: "C",
+                 input: "",
+                 output: "Hello World",
+                 matchLines: false,
+                 partial: false
+               };
+      }
     }
   };
 
