@@ -85,9 +85,9 @@
     };
   };
 
-  var writeRunScript = function(language, filename, counter) {
+  var writeRunScript = function(language, filename, time, counter) {
     var langHandler = require(config.languages[language]);
-    var runScript = langHandler.getRunScript(filename, counter);
+    var runScript = langHandler.getRunScript(filename, time, counter);
     return function() {
       return static.writeFile('stage/' + counter + '/run.sh', runScript);
     };
@@ -107,9 +107,14 @@
 
   var checkRunErrors = function(id) {
     return function(data) {
-      if ((data + "").trim() == "")
+      data = (data + "").trim();
+      if (data === "")
         return true;
-      db.reportRunFail(id, data + "");
+      var tle = "CPU time limit exceeded";
+      if (data.slice(0, tle.length) === tle)
+        db.reportTLE(id);
+      else
+        db.reportRunFail(id, data + "");
       throw new Error("Runtime Error");
     };
   };
@@ -163,7 +168,7 @@
       .then(execCompileScript(i), reportError)
       .then(readCompile(i), reportError)
       .then(checkCompile(obj.id), reportError)
-      .then(writeRunScript(obj.language, obj.filename, i), reportError)
+      .then(writeRunScript(obj.language, obj.filename, obj.time, i), reportError)
       .then(execRunScript(i), reportError)
       .then(readRunErrors(i), reportError)
       .then(checkRunErrors(obj.id), reportError)
