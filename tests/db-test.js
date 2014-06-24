@@ -79,6 +79,23 @@
                  partial: false
                };
       }
+
+      case 'HelloJava': {
+        var code = "class Hello {\n" +
+                   "public static void main(String args[]) {\n" +
+                   "System.out.println(\"Hello World\");\n" +
+                   "}\n" +
+                   "}";
+        return { id: data,
+                 filename: "Hello.java",
+                 code: code,
+                 language: "Java",
+                 input: "",
+                 output: "Hello World",
+                 matchLines: false,
+                 partial: false
+               };
+      }
     }
   };
 

@@ -32,4 +32,5 @@
   module.exports.parse = parse;
   module.exports.reportCompileFail = reportCompileFail;
   module.exports.reportRunFail = reportRunFail;
+  module.exports.reportResult = reportResult;
 })();

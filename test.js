@@ -53,5 +53,6 @@ var tests = [
   "testC.js",
   "testCompileError.js",
   "testRuntimeError.js",
-  "testAcceptInput.js"
+  "testAcceptInput.js",
+  "testJava.js"
 ];
