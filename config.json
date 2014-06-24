@@ -5,6 +5,8 @@
   "extPort": 6029,
   "dbHandler": "./db-hoax.js",
   "languages": {
-    "C": "./languages/C.js"
+    "C": "./languages/C.js",
+    "CPP": "./languages/CPP.js",
+    "Python": "./languages/Python.js"
   }
 }
