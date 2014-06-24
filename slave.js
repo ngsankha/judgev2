@@ -122,11 +122,26 @@
 
   var checkRunOutput = function(id, output, matchLines, partial) {
     return function(data) {
-      // TODO: actual output testing code
-      // also write to the db here
-      // that would be a db.reportResult(id, result) call.
-      console.log(data + "");
-      return db.reportResult(id, data + "");
+      var result;
+      if (!matchLines) {
+        if ((data + "").trim() === output.trim())
+          result = 1;
+        else
+          result = 0;
+      } else {
+        var outputLines = output.trim().split("\n");
+        var dataLines = (data + "").trim().split("\n");
+        var count = 0;
+        for (var i in outputLines) {
+          if (outputLines[i].trim() !== dataLines[i].trim()) {
+            if (!partial)
+              result = 0;
+          } else
+            count++;
+        }
+        result = count / outputLines.length;
+      }
+      return db.reportResult(id, result + "");
     };
   };
 

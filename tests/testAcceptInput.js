@@ -5,10 +5,10 @@ function runTest() {
 }
 
 function checkResponse(data) {
-  if (data.trim() === '45')
+  if (data.trim() === "1")
     lib.success("testAcceptInput.js");
   else
-    lib.fail("testAcceptInput.js: Expected 45 but got " + data);
+    lib.fail("testAcceptInput.js: Expected 1 but got " + data);
 }
 
 module.exports.runTest = runTest;

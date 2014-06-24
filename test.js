@@ -54,5 +54,8 @@ var tests = [
   "testCompileError.js",
   "testRuntimeError.js",
   "testAcceptInput.js",
-  "testJava.js"
+  "testJava.js",
+  "testWrongOutput.js",
+  "testMatchLines.js",
+  "testPartial.js"
 ];
