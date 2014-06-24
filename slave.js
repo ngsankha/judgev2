@@ -124,6 +124,7 @@
       // also write to the db here
       // that would be a db.reportResult(id, result) call.
       console.log(data + "");
+      return db.reportResult(id, data + "");
     };
   };
 
