@@ -57,5 +57,6 @@ var tests = [
   "testJava.js",
   "testWrongOutput.js",
   "testMatchLines.js",
-  "testPartial.js"
+  "testPartial.js",
+  "testTLE.js"
 ];

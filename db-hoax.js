@@ -12,7 +12,8 @@
              input: "",
              output: "Hello World",
              matchLines: false,
-             partial: false
+             partial: false,
+             time: 1
            };
   };
 
@@ -24,6 +25,10 @@
     console.log(msg);
   };
 
+  var reportTLE = function(id) {
+    // TLE reporting code here
+  };
+
   var reportResult = function(id, msg) {
     // code that handles the result of the code
     // do whatever you want to write to the db here
@@ -33,4 +38,5 @@
   module.exports.reportCompileFail = reportCompileFail;
   module.exports.reportRunFail = reportRunFail;
   module.exports.reportResult = reportResult;
+  module.exports.reportTLE = reportTLE;
 })();

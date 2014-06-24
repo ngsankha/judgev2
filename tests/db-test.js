@@ -26,7 +26,8 @@
                  input: "",
                  output: "Hello World",
                  matchLines: false,
-                 partial: false
+                 partial: false,
+                 time: 1
                };
       }
 
@@ -39,7 +40,8 @@
                  input: "",
                  output: "",
                  matchLines: false,
-                 partial: false
+                 partial: false,
+                 time: 1
                };
       }
 
@@ -57,7 +59,8 @@
                  input: "45",
                  output: "",
                  matchLines: false,
-                 partial: false
+                 partial: false,
+                 time: 1
                };
       }
 
@@ -76,7 +79,8 @@
                  input: "45",
                  output: "45",
                  matchLines: false,
-                 partial: false
+                 partial: false,
+                 time: 1
                };
       }
 
@@ -93,7 +97,8 @@
                  input: "",
                  output: "Hello World",
                  matchLines: false,
-                 partial: false
+                 partial: false,
+                 time: 1
                };
       }
 
@@ -110,7 +115,8 @@
                  input: "",
                  output: "Hello World",
                  matchLines: false,
-                 partial: false
+                 partial: false,
+                 time: 1
                };
       }
 
@@ -127,7 +133,8 @@
                  input: "",
                  output: "Hello\nWorld",
                  matchLines: true,
-                 partial: false
+                 partial: false,
+                 time: 1
                };
       }
 
@@ -144,7 +151,26 @@
                  input: "",
                  output: "Hello\nWorld",
                  matchLines: true,
-                 partial: true
+                 partial: true,
+                 time: 1
+               };
+      }
+
+      case 'TLE': {
+        var code = "#include <stdio.h>\n" +
+                   "int main() {\n" +
+                   "while(1);\n" +
+                   "return 0;\n" +
+                   "}";
+        return { id: data,
+                 filename: "hello.c",
+                 code: code,
+                 language: "C",
+                 input: "",
+                 output: "",
+                 matchLines: false,
+                 partial: false,
+                 time: 1
                };
       }
     }
@@ -158,6 +184,10 @@
     pingHarness("RuntimeError");
   };
 
+  var reportTLE = function(id) {
+    pingHarness("TLE");
+  };
+
   var reportResult = function(id, msg) {
     pingHarness(msg);
   };
@@ -166,4 +196,5 @@
   module.exports.reportCompileFail = reportCompileFail;
   module.exports.reportRunFail = reportRunFail;
   module.exports.reportResult = reportResult;
+  module.exports.reportTLE = reportTLE;
 })();
