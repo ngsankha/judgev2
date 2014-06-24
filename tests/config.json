@@ -5,6 +5,9 @@
   "extPort": 6029,
   "dbHandler": "./tests/db-test.js",
   "languages": {
-    "C": "./languages/C.js"
+    "C": "./languages/C.js",
+    "CPP": "./languages/CPP.js",
+    "Java": "./languages/Java.js",
+    "Python": "./languages/Python.js"
   }
 }
