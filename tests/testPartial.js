@@ -2,14 +2,14 @@
 // that does not require any user input.
 
 function runTest() {
-  lib.sendToMaster('hello_C');
+  lib.sendToMaster('Partial');
 }
 
 function checkResponse(data) {
-  if (data.trim() === "1")
-    lib.success("testC.js");
+  if (data.trim() === "0.5")
+    lib.success("testPartial.js");
   else
-    lib.fail("testC.js: Expected 1 but received " + data);
+    lib.fail("testPartial.js: Expected 0.5 but received " + data);
 }
 
 module.exports.runTest = runTest;

@@ -96,6 +96,57 @@
                  partial: false
                };
       }
+
+      case 'WrongOutput': {
+        var code = "#include <stdio.h>\n" +
+                   "int main() {\n" +
+                   "printf(\"Hello\\n\");\n" +
+                   "return 0;\n" +
+                   "}";
+        return { id: data,
+                 filename: "hello.c",
+                 code: code,
+                 language: "C",
+                 input: "",
+                 output: "Hello World",
+                 matchLines: false,
+                 partial: false
+               };
+      }
+
+      case 'MatchLines': {
+        var code = "#include <stdio.h>\n" +
+                   "int main() {\n" +
+                   "printf(\"Hello \\nWorld\\n\");\n" +
+                   "return 0;\n" +
+                   "}";
+        return { id: data,
+                 filename: "hello.c",
+                 code: code,
+                 language: "C",
+                 input: "",
+                 output: "Hello\nWorld",
+                 matchLines: true,
+                 partial: false
+               };
+      }
+
+      case 'Partial': {
+        var code = "#include <stdio.h>\n" +
+                   "int main() {\n" +
+                   "printf(\"Hello \\nBoom\\n\");\n" +
+                   "return 0;\n" +
+                   "}";
+        return { id: data,
+                 filename: "hello.c",
+                 code: code,
+                 language: "C",
+                 input: "",
+                 output: "Hello\nWorld",
+                 matchLines: true,
+                 partial: true
+               };
+      }
     }
   };
 
