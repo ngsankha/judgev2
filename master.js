@@ -44,7 +44,6 @@
     });
     socket.on('end', function() {
       slavesLoad[data]--;
-      console.log(slavesLoad[data]);
     });
   };
 

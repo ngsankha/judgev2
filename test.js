@@ -1,11 +1,12 @@
-var net = require('net');
-for (var i = 0; i < 10; i++) {
-  ping();
+var sh = require('child_process');
+
+var master, slave;
+
+function init() {
+  console.log('Started master ...');
+  master = sh.spawn('node', ['index.js', '--test', '--master']);
+  console.log('Started slave ...');
+  slave = sh.spawn('node', ['index.js', '--test', '--slave', 'test-slave']);
 }
 
-function ping() {
-  var client = net.connect({ host: 'localhost', port: 6029 },
-  function() {
-    client.end('hello');
-  });
-}
+init();
