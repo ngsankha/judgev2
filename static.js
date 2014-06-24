@@ -5,6 +5,7 @@
 
   var reportError = function(err) {
     console.log(err);
+    throw err;
   };
 
   module.exports.reportError = reportError;

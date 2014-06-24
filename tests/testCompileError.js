@@ -1,5 +1,4 @@
-// Tests if codejudge successfully compiles and runs a C program
-// that does not require any user input.
+// Tests if codejudge returns a compile error
 
 function runTest() {
   lib.sendToMaster('CompileErrorC');

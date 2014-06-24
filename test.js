@@ -51,5 +51,7 @@ setTimeout(function() {
 
 var tests = [
   "testC.js",
-  "testCompileError.js"
+  "testCompileError.js",
+  "testRuntimeError.js",
+  "testAcceptInput.js"
 ];
