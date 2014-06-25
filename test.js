@@ -5,7 +5,8 @@ var sh = require('child_process'),
 
 var master, slave, testServer, currTest;
 
-var tested = 0;
+var tested = 0,
+    failed = 0;
 
 function init() {
   master = sh.spawn('node', ['index.js', '--test', '--master']);
@@ -23,7 +24,8 @@ function testHandler(socket) {
   });
   socket.on('end', function() {
     tested++;
-    currTest.checkResponse(data);
+    if (!currTest.checkResponse(data))
+      failed++;
     if (tested === tests.length)
       shutdown();
     else
@@ -39,7 +41,7 @@ function runTests(i) {
 function shutdown() {
   slave.kill();
   master.kill();
-  process.exit();
+  process.exit(failed);
 }
 
 init();

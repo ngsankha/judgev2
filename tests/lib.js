@@ -1,9 +1,6 @@
 (function() {
   var net = require('net');
 
-  var passed = 0,
-      failed = 0;
-
   var sendToMaster = function(data) {
     var client = net.connect({ host: 'localhost', port: 6029 },
       function() {
@@ -16,13 +13,13 @@
   };
 
   var success = function(data) {
-    passed++;
     console.log("TEST PASSED: " + data);
+    return true;
   };
 
   var fail = function(data) {
-    failed++;
-    console.log("TEST FAILED: " + data);
+    console.error("TEST FAILED: " + data);
+    return false;
   };
 
   module.exports.sendToMaster = sendToMaster;
