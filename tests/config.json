@@ -4,6 +4,7 @@
   "masterPort": 2021,
   "extPort": 6029,
   "dbHandler": "./tests/db-test.js",
+  "useFakeChroot": false,
   "languages": {
     "C": "./languages/C.js",
     "CPP": "./languages/CPP.js",

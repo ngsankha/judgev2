@@ -10,6 +10,7 @@
   module.exports.masterPort = config.masterPort;
   module.exports.dbHandler = config.dbHandler;
   module.exports.languages = config.languages;
+  module.exports.useFakeChroot = config.useFakeChroot;
 
   console.log('Configuration file loaded.');
 })();
