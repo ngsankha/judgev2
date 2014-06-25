@@ -7,9 +7,8 @@ function runTest() {
 
 function checkResponse(data) {
   if (data.trim() === "0")
-    lib.success("testWrongOutput.js");
-  else
-    lib.fail("testWrongOutput.js: Expected 0 but received " + data);
+    return lib.success("testWrongOutput.js");
+  return lib.fail("testWrongOutput.js: Expected 0 but received " + data);
 }
 
 module.exports.runTest = runTest;

@@ -7,9 +7,8 @@ function runTest() {
 
 function checkResponse(data) {
   if (data.trim() === "0.5")
-    lib.success("testPartial.js");
-  else
-    lib.fail("testPartial.js: Expected 0.5 but received " + data);
+    return lib.success("testPartial.js");
+  return lib.fail("testPartial.js: Expected 0.5 but received " + data);
 }
 
 module.exports.runTest = runTest;

@@ -7,9 +7,8 @@ function runTest() {
 
 function checkResponse(data) {
   if (data.trim() === "1")
-    lib.success("testPython.js");
-  else
-    lib.fail("testPython.js: Expected 1 but received " + data);
+    return lib.success("testPython.js");
+  return lib.fail("testPython.js: Expected 1 but received " + data);
 }
 
 module.exports.runTest = runTest;

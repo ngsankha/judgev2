@@ -6,9 +6,8 @@ function runTest() {
 
 function checkResponse(data) {
   if (data.trim() === 'CompileError')
-    lib.success("testCompileError.js");
-  else
-    lib.fail("testCompileError.js: Expected a compile error but there was none");
+    return lib.success("testCompileError.js");
+  return lib.fail("testCompileError.js: Expected a compile error but there was none");
 }
 
 module.exports.runTest = runTest;

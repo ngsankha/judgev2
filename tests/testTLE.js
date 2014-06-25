@@ -6,9 +6,8 @@ function runTest() {
 
 function checkResponse(data) {
   if (data.trim() === "TLE")
-    lib.success("testTLE.js");
-  else
-    lib.fail("testTLE.js: Expected TLE but received " + data);
+    return lib.success("testTLE.js");
+  return lib.fail("testTLE.js: Expected TLE but received " + data);
 }
 
 module.exports.runTest = runTest;

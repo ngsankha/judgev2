@@ -1,9 +1,14 @@
 {
   "name": "judgev2",
-  "version": "0.1.0",
+  "version": "0.6.0",
   "description": "online judge",
   "dependencies": {
     "promise": "*",
     "rimraf": "*"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/sankha93/judgev2.git",
+  "scripts": {
+  	"test": "node test.js"
   }
 }
