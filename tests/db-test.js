@@ -102,6 +102,38 @@
                };
       }
 
+      case 'HelloCPP': {
+        var code = "#include <iostream>\n" +
+                   "int main() {\n" +
+                   "std::cout << \"Hello World\" << std::endl;\n" +
+                   "return 0;\n" +
+                   "}";
+        return { id: data,
+                 filename: "hello.cpp",
+                 code: code,
+                 language: "CPP",
+                 input: "",
+                 output: "Hello World",
+                 matchLines: false,
+                 partial: false,
+                 time: 1
+               };
+      }
+
+      case 'HelloPython': {
+        var code = "print \"Hello World\"";
+        return { id: data,
+                 filename: "hello.py",
+                 code: code,
+                 language: "Python",
+                 input: "",
+                 output: "Hello World",
+                 matchLines: false,
+                 partial: false,
+                 time: 1
+               };
+      }
+
       case 'WrongOutput': {
         var code = "#include <stdio.h>\n" +
                    "int main() {\n" +

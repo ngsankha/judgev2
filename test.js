@@ -55,6 +55,8 @@ var tests = [
   "testRuntimeError.js",
   "testAcceptInput.js",
   "testJava.js",
+  "testCPP.js",
+  "testPython.js",
   "testWrongOutput.js",
   "testMatchLines.js",
   "testPartial.js",
