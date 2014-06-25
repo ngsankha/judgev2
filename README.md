@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sankha93/judgev2.png)](https://travis-ci.org/sankha93/judgev2)
+
 judgev2
 =======
 
