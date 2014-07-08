@@ -2,6 +2,7 @@ if (process.argv.length > 2) {
   var i = 2;
   if (process.argv[2] === '--test') {
     test = true;
+    lib = require('./tests/lib.js');
     i = 3;
   } else
     test = false;

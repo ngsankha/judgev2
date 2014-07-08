@@ -1,6 +1,7 @@
 lib = require('./tests/lib.js');
 
 var sh = require('child_process'),
+    fs = require('fs'),
     net = require('net');
 
 var master, slave, testServer, currTest;
@@ -39,10 +40,12 @@ function runTests(i) {
 }
 
 function shutdown() {
-  slave.kill();
-  master.kill();
+  //slave.kill();
+  //master.kill();
   process.exit(failed);
 }
+
+var tests = JSON.parse(fs.readFileSync('./tests/tests.json'));
 
 init();
 
@@ -50,17 +53,3 @@ init();
 setTimeout(function() {
   runTests(0);
 }, 1000);
-
-var tests = [
-  "testC.js",
-  "testCompileError.js",
-  "testRuntimeError.js",
-  "testAcceptInput.js",
-  "testJava.js",
-  "testCPP.js",
-  "testPython.js",
-  "testWrongOutput.js",
-  "testMatchLines.js",
-  "testPartial.js",
-  "testTLE.js"
-];
