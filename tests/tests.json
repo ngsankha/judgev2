@@ -1,3 +1,13 @@
 [
-  "testC.js"
+  "testC.js",
+  "testCompileError.js",
+  "testRuntimeError.js",
+  "testAcceptInput.js",
+  "testJava.js",
+  "testCPP.js",
+  "testPython.js",
+  "testWrongOutput.js",
+  "testMatchLines.js",
+  "testPartial.js",
+  "testTLE.js"
 ]

@@ -40,8 +40,8 @@ function runTests(i) {
 }
 
 function shutdown() {
-  //slave.kill();
-  //master.kill();
+  slave.kill();
+  master.kill();
   process.exit(failed);
 }
 

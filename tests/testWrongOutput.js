@@ -1,15 +1,29 @@
 // Tests if codejudge successfully compiles and runs a C program
-// that does not require any user input.
+// that gives the wrong output.
+
+var testfile = "testWrongOutput.js";
 
 function runTest() {
-  lib.sendToMaster('WrongOutput');
+  lib.sendToMaster(testfile);
+}
+
+function dbResponse() {
+  return lib.createDbResponse(testfile,        /* test file   */
+                              "wrongOut.c",    /* source file */
+                              "C",             /* language    */
+                              "",              /* input       */
+                              "Hello World",   /* output      */
+                              false,           /* match lines */
+                              false,           /* partial     */
+                              1                /* time limit  */);
 }
 
 function checkResponse(data) {
   if (data.trim() === "0")
-    return lib.success("testWrongOutput.js");
-  return lib.fail("testWrongOutput.js: Expected 0 but received " + data);
+    return lib.success(testfile);
+  return lib.fail(testfile + ": Expected 0 but received " + data);
 }
 
 module.exports.runTest = runTest;
 module.exports.checkResponse = checkResponse;
+module.exports.dbResponse = dbResponse;
