@@ -11,7 +11,7 @@ The instructing to run the judge are described in the [Running](https://github.c
 
 Tests
 -----
-You can run the tests by using `node test.js`.
+You can run the tests by using `npm test`.
 
 More details on the [Tests](https://github.com/sankha93/judgev2/wiki/Tests) page on wiki.
 
