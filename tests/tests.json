@@ -10,5 +10,6 @@
   "testMatchLines.js",
   "testPartial.js",
   "testTLE.js",
-  "testMemExceed.js"
+  "testMemExceed.js",
+  "testFork.js"
 ]
