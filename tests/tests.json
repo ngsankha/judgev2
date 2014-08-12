@@ -9,5 +9,6 @@
   "testWrongOutput.js",
   "testMatchLines.js",
   "testPartial.js",
-  "testTLE.js"
+  "testTLE.js",
+  "testMemExceed.js"
 ]
