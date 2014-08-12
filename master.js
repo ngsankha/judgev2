@@ -7,8 +7,8 @@
 
   var enlistServers = function() {
     slavesIp = JSON.parse(fs.readFileSync(test ? './tests/slaves.json' : 'slaves.json'));
-    for (var name in slavesIp) {
-      slavesLoad[name] = 0;
+    for (var i = 0; i < slavesIp.length; i++) {
+      slavesLoad[i] = 0;
     }
     console.log('List of slaves loaded.');
   };

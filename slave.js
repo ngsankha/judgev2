@@ -137,7 +137,7 @@
         var outputLines = output.trim().split("\n");
         var dataLines = (data + "").trim().split("\n");
         var count = 0;
-        for (var i in outputLines) {
+        for (var i = 0; i < outputLines.length; i++) {
           if (outputLines[i].trim() !== dataLines[i].trim()) {
             if (!partial)
               result = 0;
